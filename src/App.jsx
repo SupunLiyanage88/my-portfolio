@@ -24,7 +24,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="flex items-center justify-center text-center py-10 w-full">
+      <section className="flex items-center justify-center text-center py-10">
         <div className="flex-1">
           <img
             src={profilePic}
@@ -38,7 +38,15 @@ function App() {
             A passionate <span className="font-semibold">software engineer</span> specializing in building innovative web and mobile applications. Explore my work and let's create something amazing together!
           </p>
           <div className="flex justify-center gap-5 mt-5">
-            <a href="#" className="text-blue-500">LinkedIn</a>
+            <a 
+              href="https://www.linkedin.com/in/supun-liyanage-600790223" 
+              className="text-blue-500 hover:underline" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+
             <a href="#" className="text-blue-500">GitHub</a>
             <button className="bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-300">Download Resume</button>
           </div>
