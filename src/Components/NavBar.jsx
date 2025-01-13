@@ -1,17 +1,22 @@
-import React from 'react';
-import './Tools/Loader.css'
+import React, { useState } from 'react';
+import './Tools/Loader.css';
 import ShinyText from './Tools/ShinyText.jsx';
 
-
 function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const handleContactClick = (e) => {
     e.preventDefault();
     window.location.href = '/contact';
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className="flex justify-between items-center px-32 bg-white shadow-md">
-      <div className="text-[4.5rem] font-semibold style">
+    <header className="flex justify-between items-center px-6 sm:px-32 bg-white shadow-md">
+      <div className="text-[3.5rem] sm:text-[4.5rem] font-semibold style">
         <ShinyText 
           text="LS" 
           disabled={false} 
@@ -20,7 +25,7 @@ function Navbar() {
         />
       </div>
 
-      <nav className="flex ml-10 gap-10 text-xl">
+      <nav className="hidden sm:flex ml-10 gap-10 text-xl">
         <a href="/" className="hover:text-blue-500">
           Home
         </a>
@@ -41,6 +46,30 @@ function Navbar() {
         Contact Me
       </a>
 
+      {/* Mobile Menu Button */}
+      <button 
+        onClick={toggleMenu} 
+        className="sm:hidden text-2xl focus:outline-none"
+      >
+        <span className="material-icons">menu</span>
+      </button>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="sm:hidden absolute top-20 left-0 w-full bg-white shadow-md py-4 px-6">
+          <nav className="flex flex-col gap-6 text-xl">
+            <a href="/" className="hover:text-blue-500">
+              Home
+            </a>
+            <a href="#projects" className="hover:text-blue-500">
+              Projects
+            </a>
+            <a href="#about" className="hover:text-blue-500">
+              About Me
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
