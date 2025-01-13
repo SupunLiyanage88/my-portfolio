@@ -3,6 +3,7 @@ import FadeContent from './Tools/FadeContent';
 import AnimatedContent from './Tools/AnimatedContent'
 import HeroSection from './HeroSection';
 import Content01 from './Content01';
+import Content02 from './Content02';
 
 
 const HomePage = () => {
@@ -21,6 +22,8 @@ const HomePage = () => {
         >
           <Content01 />
         </AnimatedContent>
+
+        <Content02 />
 
     </div>
 

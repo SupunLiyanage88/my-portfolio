@@ -5,6 +5,7 @@ import './Components/Tools/Loader.css';
 import AnimatedContent from './Components/Tools/AnimatedContent.jsx';
 import ContactPage from './Components/ContactPage';
 import HomePage from './Components/HomePage'; 
+import Footer from './Components/Footer.jsx'; 
 
 
 function App() {
@@ -44,11 +45,13 @@ function App() {
             >
               <Navbar />
             </AnimatedContent>
+            
 
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
+            <Footer/>
           </div>
         </>
       )}
