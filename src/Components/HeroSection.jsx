@@ -59,7 +59,7 @@ const HeroSection = () => {
 
   return (
     <div>
-      <section className="flex flex-col-reverse md:flex-row items-center justify-center text-center py-10">
+      <section className="flex flex-col-reverse md:flex-row items-center bg-gray-100 justify-center text-center py-10">
         {/* Profile Image */}
         <div className="flex-1 flex flex-col items-center">
         <AnimatedContent
