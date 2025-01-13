@@ -108,7 +108,7 @@ const HeroSection = () => {
           />
           <p className="text-base md:text-lg mt-3 max-w-2xl mx-auto">
             <SplitText
-              text="A passionate software engineer specializing in building innovative web and mobile applications. Explore my work and let's create something amazing together!"
+              text="    A passionate software engineer specializing in building innovative web and mobile applications. Explore my work and let's create something amazing together!"
               className="text-lg md:text-2xl font-thin text-center"
               delay={15}
               animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
