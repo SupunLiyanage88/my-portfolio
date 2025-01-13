@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faClone, faCopy, faCheck, faEnvelope, faFile, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faCheck, faEnvelope, faFile, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import profilePic from '../assets/Supun Liyanage profile pic.png';
 import BlurText from './Tools/BlurText.jsx';
 import SplitText from './Tools/SplitText.jsx';
@@ -80,10 +80,10 @@ const HeroSection = () => {
           </AnimatedContent>
           <div className="flex items-center gap-4 mt-4 relative">
             <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
-            <h3 className="text-base font-medium">liyanagesupun10@gmail.com</h3>
+            <h3 className="text-base font-semibold">liyanagesupun10@gmail.com</h3>
             <FontAwesomeIcon
-              icon={faClone}
-              className="text-xl cursor-pointer hover:text-blue-500 transition-colors"
+              icon={faCopy}
+              className="text-2xl font-thin cursor-pointer hover:text-blue-500 transition-colors"
               onClick={copyToClipboard}
             />
             {copied && (

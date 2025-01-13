@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Components/NavBar'; // Import Navbar
-import HeroSection from './Components/HeroSection'; // Import HeroSection
-import './Components/Tools/Loader.css'
-import AnimatedContent from './Components/Tools/AnimatedContent.jsx'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/NavBar';
+import HeroSection from './Components/HeroSection';
+import './Components/Tools/Loader.css';
+import AnimatedContent from './Components/Tools/AnimatedContent.jsx';
+import ContactPage from './Components/ContactPage';
+import HomePage from './Components/HomePage'; // Import the new HomePage component
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +20,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       {isLoading ? (
         <div className="loader">
           <div className="loader-text">
@@ -38,13 +41,17 @@ function App() {
             scale={1.0}
             threshold={0.1}
           >
-          <Navbar /> 
-
+            <Navbar />
           </AnimatedContent>
-          <HeroSection /> 
+
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/hero" element={<HeroSection />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
         </>
       )}
-    </>
+    </BrowserRouter>
   );
 }
 
