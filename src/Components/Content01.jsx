@@ -76,7 +76,7 @@ const Content01 = () => {
           ))}
         </div>
       </div>
-      
+      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <div className="flex justify-center mt-12 px-4">
             <div className="flex flex-wrap gap-8 sm:gap-16 md:gap-20 lg:gap-32 bg-white rounded-lg shadow-md p-4 sm:p-8 md:p-16 lg:p-20">
                 
@@ -161,6 +161,7 @@ const Content01 = () => {
                 </div>
             </div>
         </div>
+        </FadeContent>
 
     </div>
   );
