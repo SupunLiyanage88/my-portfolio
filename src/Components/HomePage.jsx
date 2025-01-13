@@ -20,10 +20,11 @@ const HomePage = () => {
           scale={1.1}
           threshold={0.2}
         >
-          <Content01 />
+          <Content01 />          
         </AnimatedContent>
-
+        
         <Content02 />
+        
 
     </div>
 
