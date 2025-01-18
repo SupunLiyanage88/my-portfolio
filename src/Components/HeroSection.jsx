@@ -12,7 +12,7 @@ import AnimatedContent from './Tools/AnimatedContent.jsx'
 
 const HeroSection = () => {
   const [isDownloading, setIsDownloading] = useState(false);
-  const resumeUrl = "https://drive.google.com/file/d/1FNBs-DEVy5-xXuFE-djoOZMVV36U9QP0/view?usp=sharing";
+  const resumeUrl = "https://drive.google.com/file/d/1bEQ1GR5fuxZ2UOfcSqUozpqESxEYnXmT/view?usp=drive_link";
   
   const handleAnimationComplete = () => {
     console.log('Animation completed!');
