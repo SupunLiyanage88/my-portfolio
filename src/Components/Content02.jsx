@@ -75,7 +75,7 @@ const Content02 = () => {
   };
 
   return (
-    <div className="min-h-screen p-8 bg-gray-50">
+    <div className="min-h-screen p-8 bg-gray-100">
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-800 mb-20 text-center">

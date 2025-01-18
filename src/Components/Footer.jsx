@@ -20,7 +20,7 @@ const Footer = () => {
     ];
 
     const quickLinks = [
-      { name: 'Portfolio', icon: <FaFolder className="w-4 h-4" />, url: '#' },
+      { name: 'Portfolio', icon: <FaFolder className="w-4 h-4" />, url: 'https://supunliyanage.netlify.app/' },
       { name: 'Projects', icon: <FaFolder className="w-4 h-4" />, url: '#' },
       { name: 'E-mail', icon: <FaFileAlt className="w-4 h-4" />, url: 'liyanagesupun10@gmail.com' },
       { name: 'Contact', icon: <FaPhone className="w-4 h-4" />, url: '0764748263' }
