@@ -46,14 +46,16 @@ function LogoWall({
         onMouseLeave={() => pauseOnHover && setIsPaused(false)}
       >
         <div className="marquee__group">
-          {items.map((item, idx) => (
-            <img key={idx} src={item.imgUrl} alt={item.altText} />
-          ))}
+        {items.map((item, idx) => {
+  const IconComponent = item.imgUrl;
+  return <IconComponent key={idx} size={size} color={item.color} />;
+})}
         </div>
         <div className="marquee__group" aria-hidden="true">
-          {items.map((item, idx) => (
-            <img key={`dup1-${idx}`} src={item.imgUrl} alt={item.altText} />
-          ))}
+        {items.map((item, idx) => {
+  const IconComponent = item.imgUrl;
+  return <IconComponent key={idx} size={size} color={item.color} />;
+})}
         </div>
       </div>
 
@@ -64,14 +66,16 @@ function LogoWall({
         onMouseLeave={() => pauseOnHover && setIsPaused(false)}
       >
         <div className="marquee__group">
-          {items.map((item, idx) => (
-            <img key={`rev-${idx}`} src={item.imgUrl} alt={item.altText} />
-          ))}
+        {items.map((item, idx) => {
+  const IconComponent = item.imgUrl;
+  return <IconComponent key={idx} size={size} color={item.color} />;
+})}
         </div>
         <div className="marquee__group" aria-hidden="true">
-          {items.map((item, idx) => (
-            <img key={`dup2-${idx}`} src={item.imgUrl} alt={item.altText} />
-          ))}
+        {items.map((item, idx) => {
+  const IconComponent = item.imgUrl;
+  return <IconComponent key={idx} size={size} color={item.color} />;
+})}
         </div>
       </div>
     </article>

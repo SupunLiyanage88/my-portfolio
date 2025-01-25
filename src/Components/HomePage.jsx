@@ -4,6 +4,7 @@ import AnimatedContent from './Tools/AnimatedContent'
 import HeroSection from './HeroSection';
 import Content01 from './Content01';
 import Content02 from './Content02';
+import IconWall from './IconWall';
 
 
 const HomePage = () => {
@@ -24,6 +25,7 @@ const HomePage = () => {
         </AnimatedContent>
         
         <Content02 />
+        <IconWall />
         
 
     </div>
