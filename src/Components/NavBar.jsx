@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Tools/Loader.css';
 import ShinyText from './Tools/ShinyText.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -119,7 +120,7 @@ function Navbar() {
             onClick={toggleMenu} 
             className="sm:hidden text-2xl focus:outline-none"
           >
-            <span className="material-icons">menu</span>
+            <span className="material-icons">Menu </span>
           </button>
 
           {isMenuOpen && (

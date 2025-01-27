@@ -1,106 +1,259 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from 'react';
+import { 
+  FaEnvelope, 
+  FaPhone, 
+  FaMapMarkerAlt, 
+  FaLinkedin, 
+  FaGithub, 
+  FaTwitter,
+  FaPaperPlane,
+  FaArrowRight,
+  FaFacebook
+} from 'react-icons/fa';
 
 const ContactPage = () => {
-  const contactInfo = {
-    email: 'liyanagesupun10@gmail.com',
-    phone: '+94 76 4748 263'
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [focusedInput, setFocusedInput] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleCopy = (text) => {
-    navigator.clipboard.writeText(text);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xrbebwvr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setShowSuccessMessage(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 5000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
+  // Rest of the component remains exactly the same as your current code
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-lg bg-white rounded-xl shadow-lg">
-        <div className="p-6">
-          {/* Header */}
-          <div className="text-center mb-6">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Contact Me
-            </h1>
+    <div className="min-h-screen bg-gray-100 py-12 px-4 mt-10">
+      {/* Your existing JSX code stays exactly the same */}
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16 opacity-0 animate-[fadeInDown_1s_ease-out_forwards]">
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-400 inline-block text-transparent bg-clip-text">
+            Let's Connect
+          </h1>
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            Have an idea? Let's bring it to life together.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Contact Information */}
+          <div className="bg-white rounded-3xl p-8 shadow-lg opacity-0 animate-[fadeInLeft_1s_ease-out_0.3s_forwards]">
+            <h2 className="text-2xl font-semibold mb-8 text-gray-800">Contact Details</h2>
+            
+            <div className="space-y-6">
+              <div className="group flex items-center p-4 bg-gray-50 rounded-2xl transition-all duration-300 hover:bg-gray-100 cursor-pointer">
+                <div className="p-3 bg-gray-200 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                  <FaEnvelope className="text-gray-700 text-xl" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Email</p>
+                  <a href="mailto:liyanagesupun10@gmail.com" className="text-gray-800 group-hover:text-gray-600">
+                    liyanagesupun10@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="group flex items-center p-4 bg-gray-50 rounded-2xl transition-all duration-300 hover:bg-gray-100 cursor-pointer">
+                <div className="p-3 bg-gray-200 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                  <FaPhone className="text-gray-700 text-xl" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Phone</p>
+                  <a href="tel:+94764748263" className="text-gray-800 group-hover:text-gray-600">
+                    +94 76 474 8263
+                  </a>
+                </div>
+              </div>
+
+              <div className="group flex items-center p-4 bg-gray-50 rounded-2xl transition-all duration-300 hover:bg-gray-100 cursor-pointer">
+                <div className="p-3 bg-gray-200 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                  <FaMapMarkerAlt className="text-gray-700 text-xl" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Location</p>
+                  <p className="text-gray-800 group-hover:text-gray-600">Malabe, Sri Lanka</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12">
+              <h3 className="text-lg font-semibold mb-6 text-gray-800">Social Links</h3>
+              <div className="flex space-x-4">
+                {['linkedin', 'github', 'facebook'].map((social) => (
+                  <a
+                    key={social}
+                    href={
+                      social === 'linkedin'
+                        ? 'https://www.linkedin.com/in/supun-liyanage-600790223'
+                        : social === 'github'
+                        ? 'https://github.com/SupunLiyanage88'
+                        : social === 'facebook'
+                        ? 'https://www.facebook.com/supun.liyanage08/'
+                        : '#'
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 bg-gray-100 rounded-2xl hover:bg-gray-200 transition-all duration-300 hover:scale-110"
+                  >
+                    {social === 'linkedin' && <FaLinkedin className="text-gray-700 text-xl" />}
+                    {social === 'github' && <FaGithub className="text-gray-700 text-xl" />}
+                    {social === 'facebook' && <FaFacebook className="text-gray-700 text-xl" />}
+                  </a>
+                ))}
+              </div>
+            </div>
+
           </div>
 
-          <div className="space-y-6">
-            {/* Coming Soon Banner */}
-            <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 border border-yellow-200 rounded-lg p-4">
-              <h2 className="text-xl font-semibold text-yellow-800 mb-2 flex items-center justify-center gap-2">
-                <span className="animate-pulse">🚧</span>
-                Contact Form Coming Soon
-                <span className="animate-pulse">🚧</span>
-              </h2>
-              
-              {/* Terminal Animation */}
-              <div className="my-6">
-                <div className="mx-auto max-w-md bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                  <div className="bg-gray-800 flex items-center p-2 relative">
-                    <div className="flex absolute left-2">
-                      <span className="h-3 w-3 bg-red-500 rounded-full mr-2"></span>
-                      <span className="h-3 w-3 bg-yellow-500 rounded-full mr-2"></span>
-                      <span className="h-3 w-3 bg-green-500 rounded-full"></span>
-                    </div>
-                    <div className="flex-1 text-center text-gray-300 text-sm font-mono">
-                      development
-                    </div>
-                  </div>
-                  <div className="p-4 font-mono text-sm">
-                    <div className="text-green-400 flex items-center">
-                      <span className="mr-2">$ Building contact form</span>
-                      <span className="flex">
-                      <span class="animate-[ping_1.5s_0.5s_ease-in-out_infinite]">.</span>
-                      <span class="animate-[ping_1.5s_0.7s_ease-in-out_infinite]">.</span>
-                      <span class="animate-[ping_1.5s_0.9s_ease-in-out_infinite]">.</span>
-                      </span>
-                    </div>
-                  </div>
+          {/* Contact Form */}
+          <div className="bg-white rounded-3xl p-8 shadow-lg opacity-0 animate-[fadeInRight_1s_ease-out_0.6s_forwards]">
+            <h2 className="text-2xl font-semibold mb-8 text-gray-800">Send a Message</h2>
+
+            {showSuccessMessage && (
+              <div className="bg-green-50 border border-green-200 p-4 mb-6 rounded-2xl animate-[fadeIn_0.3s_ease-out]">
+                <div className="flex items-center">
+                  <FaPaperPlane className="text-green-600 text-xl mr-3" />
+                  <p className="text-green-600">Your message has been sent successfully! I will get in touch with you shortly.</p>
                 </div>
               </div>
-            </div>
+            )}
 
-            {/* Contact Information */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium text-gray-700 text-center">
-                Meanwhile, you can reach me directly at:
-              </h3>
-              
-              <div className="space-y-3">
-                <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-blue-400 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <FontAwesomeIcon icon={faEnvelope} />
-                    <span className="text-gray-600">{contactInfo.email}</span>
-                  </div>
-                  <button 
-                    onClick={() => handleCopy(contactInfo.email)}
-                    className="px-3 py-1 text-sm text-gray-600 hover:bg-blue-50 rounded-md transition-colors"
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {['name', 'email', 'message'].map((field) => (
+                <div key={field} className="relative">
+                  <label
+                    htmlFor={field}
+                    className={`absolute left-4 transition-all duration-300 ${
+                      focusedInput === field || formData[field]
+                        ? '-top-3 text-sm bg-white px-2 text-gray-600'
+                        : 'top-3 text-gray-400'
+                    }`}
                   >
-                    Copy
-                  </button>
+                    {field.charAt(0).toUpperCase() + field.slice(1)}
+                  </label>
+                  {field === 'message' ? (
+                    <textarea
+                      id={field}
+                      name={field}
+                      rows="5"
+                      value={formData[field]}
+                      onChange={handleChange}
+                      onFocus={() => setFocusedInput(field)}
+                      onBlur={() => setFocusedInput(null)}
+                      className="w-full bg-gray-50 rounded-2xl px-4 py-3 text-gray-800 border border-gray-200 focus:border-gray-400 focus:ring-2 focus:ring-gray-200 transition-all duration-300 resize-none"
+                      required
+                    />
+                  ) : (
+                    <input
+                      id={field}
+                      type={field === 'email' ? 'email' : 'text'}
+                      name={field}
+                      value={formData[field]}
+                      onChange={handleChange}
+                      onFocus={() => setFocusedInput(field)}
+                      onBlur={() => setFocusedInput(null)}
+                      className="w-full bg-gray-50 rounded-2xl px-4 py-3 text-gray-800 border border-gray-200 focus:border-gray-400 focus:ring-2 focus:ring-gray-200 transition-all duration-300"
+                      required
+                    />
+                  )}
                 </div>
+              ))}
 
-                <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-blue-400 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <FontAwesomeIcon icon={faPhone} />
-                    <span className="text-gray-600">{contactInfo.phone}</span>
-                  </div>
-                  <button 
-                    onClick={() => handleCopy(contactInfo.phone)}
-                    className="px-3 py-1 text-sm text-gray-600 hover:bg-blue-50 rounded-md transition-colors"
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Status Message */}
-            <p className="text-center text-gray-500 text-sm">
-              I've actively working on making this page even better for you!
-            </p>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="group w-full py-4 px-6 rounded-2xl bg-gray-900 text-white font-medium 
+                  transition-all duration-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300
+                  flex items-center justify-center space-x-2"
+              >
+                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                <FaArrowRight className="transform group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </form>
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 };
