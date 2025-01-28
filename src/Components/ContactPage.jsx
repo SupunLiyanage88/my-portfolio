@@ -5,7 +5,6 @@ import {
   FaMapMarkerAlt, 
   FaLinkedin, 
   FaGithub, 
-  FaTwitter,
   FaPaperPlane,
   FaArrowRight,
   FaFacebook
