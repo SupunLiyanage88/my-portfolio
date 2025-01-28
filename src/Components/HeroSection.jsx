@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faCopy, faCheck, faEnvelope, faFile, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { MdEmail, MdContentCopy, MdCopyAll } from "react-icons/md";
 import profilePic from '../assets/Supun Liyanage profile pic.png';
 import BlurText from './Tools/BlurText.jsx';
 import SplitText from './Tools/SplitText.jsx';
@@ -79,13 +80,14 @@ const HeroSection = () => {
           />
           </AnimatedContent>
           <div className="flex items-center gap-4 mt-4 relative">
-            <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
-            <h3 className="text-base font-semibold">liyanagesupun10@gmail.com</h3>
-            <FontAwesomeIcon
-              icon={faCopy}
-              className="text-2xl font-thin cursor-pointer hover:text-blue-500 transition-colors"
-              onClick={copyToClipboard}
-            />
+            <div className="flex items-center gap-4 mt-4 relative">
+              <MdEmail className="text-2xl" />
+              <h3 className="text-base font-semibold">liyanagesupun10@gmail.com</h3>
+              <MdCopyAll 
+                className="text-2xl cursor-pointer hover:text-blue-500 transition-colors"
+                onClick={copyToClipboard}
+              />
+            </div>
             {copied && (
               <div className="fixed transform -translate-x-1/2 bg-gray-300 text-black px-4 py-2 rounded-lg text-sm flex items-center gap-2 shadow-lg notification-animate z-50" style={{ left: '50%', bottom: '2rem' }}>
                 <FontAwesomeIcon icon={faCheck} className="text-green-600" />
