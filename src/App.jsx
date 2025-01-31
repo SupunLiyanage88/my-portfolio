@@ -4,6 +4,7 @@ import Navbar from './Components/NavBar';
 import './Components/Tools/Loader.css';
 import AnimatedContent from './Components/Tools/AnimatedContent.jsx';
 import ContactPage from './Components/ContactPage';
+import Project from './Components/Projects';
 import HomePage from './Components/HomePage'; 
 import Footer from './Components/Footer.jsx'; 
 
@@ -50,6 +51,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/Project" element={<Project />} />
             </Routes>
             <Footer/>
           </div>
