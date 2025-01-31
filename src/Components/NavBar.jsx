@@ -24,6 +24,11 @@ const Navbar = () => {
     e.preventDefault();
     window.location.href = '/contact';
   };
+  const handleProjectClick = (e) => {
+    e.preventDefault();
+    window.location.href = '/contact';
+  };
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -71,7 +76,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', icon: FiHome, href: '/' },
-    { name: 'Projects', icon: FiFolder, href: '#projects' },
+    { name: 'Projects', icon: FiFolder, href: '/Project' },
     { name: 'About Me', icon: FiUser, href: '#about', onClick: handleAboutClick },
   ];
 
@@ -85,7 +90,7 @@ const Navbar = () => {
         
         <div className="relative">
           <div className="flex justify-between items-center px-6 sm:px-32 py-4">
-            <div className="text-[3.5rem] sm:text-[4.5rem] font-semibold">
+            <div className="text-[3.5rem] sm:text-[4.5rem] font-semibold style">
               <ShinyText 
                 text="LS" 
                 disabled={false} 
