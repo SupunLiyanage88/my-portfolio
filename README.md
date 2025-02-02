@@ -133,9 +133,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Email - your.email@example.com
-
-Project Link: [https://github.com/SupunLiyanage88/portfolio](https://github.com/SupunLiyanage88/portfolio)
+Email - liyanagesupun10@gmail.com
 
 Portfolio Link: [https://supunliyanage.netlify.app/](https://supunliyanage.netlify.app/)
 
