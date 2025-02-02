@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faCopy, faCheck, faEnvelope, faFile, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { MdEmail, MdContentCopy, MdCopyAll } from "react-icons/md";
+import { faCheck, faFile, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { MdEmail, MdCopyAll } from "react-icons/md";
 import profilePic from '../assets/Supun Liyanage profile pic.png';
 import BlurText from './Tools/BlurText.jsx';
 import SplitText from './Tools/SplitText.jsx';
 import './Tools/Tool.css';
 import FadeContent from './Tools/FadeContent.jsx'
 import AnimatedContent from './Tools/AnimatedContent.jsx'
+import RotatingText from './Tools/RotatingText'
 
 
 const HeroSection = () => {
@@ -27,7 +28,6 @@ const HeroSection = () => {
     setIsDownloading(true);
     
     if (action === 'download') {
-      // Convert Google Drive view URL to direct download URL
       const fileId = resumeUrl.split('/')[5];
       const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
       
@@ -60,26 +60,36 @@ const HeroSection = () => {
 
   return (
     <div>
-      <section className="flex flex-col-reverse md:flex-row items-center bg-gray-100 justify-center text-center py-10">
+      <section className="flex flex-col-reverse md:flex-row items-center bg-gray-100 justify-center text-center py-5">
         {/* Profile Image */}
         <div className="flex-1 flex flex-col items-center">
-        <AnimatedContent
-            distance={150}
-            direction="horizontal"
-            reverse={false}
-            config={{ tension: 80, friction: 20 }}
-            initialOpacity={0.2}
-            animateOpacity
-            scale={1.1}
-            threshold={0.2}
-          >
-          <img
-            src={profilePic}
-            alt="Profile"
-            className="w-[15rem] md:w-[25rem] h-auto mx-auto"
-          />
+          <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >
+            <img
+              src={profilePic}
+              alt="Profile"
+              className="w-[15rem] md:w-[25rem] h-auto mx-auto"
+            />
           </AnimatedContent>
           <div className="flex items-center gap-4 mt-4 relative">
+          <AnimatedContent
+              distance={70}
+              direction="vertical"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >
             <div className="flex items-center gap-4 mt-4 relative">
               <MdEmail className="text-2xl" />
               <h3 className="text-base font-semibold">liyanagesupun10@gmail.com</h3>
@@ -88,6 +98,7 @@ const HeroSection = () => {
                 onClick={copyToClipboard}
               />
             </div>
+            </AnimatedContent>
             {copied && (
               <div className="fixed transform -translate-x-1/2 bg-gray-300 text-black px-4 py-2 rounded-lg text-sm flex items-center gap-2 shadow-lg notification-animate z-50" style={{ left: '50%', bottom: '2rem' }}>
                 <FontAwesomeIcon icon={faCheck} className="text-green-600" />
@@ -100,14 +111,37 @@ const HeroSection = () => {
 
         {/* Text Content */}
         <div className="flex-1 md:mr-[15rem] w-full md:w-[20rem] mt-10 md:mt-20 px-5 md:px-0">
-          <BlurText
+
+          {/* <BlurText
             text="Hi, I'm Supun Liyanage!"
             delay={150}
             animateBy="words"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
             className="text-3xl md:text-4xl font-semibold"
-          />
+          /> */}
+
+          <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+          <div className="items-center justify-center flex text-3xl md:text-4xl font-semibold">
+          
+            <div className="mr-3 mb-1 text-gray-500">I'm</div>
+            
+            <RotatingText
+              texts={['Supun Liyanage', 'Software Developer', 'Full-Stack Developer', 'Creative Coder!','Digital Craftsman']}
+              mainClassName="px-2 sm:px-2 md:px-3 text-black  sm:py-1 md:py-2 justify-center rounded-lg"
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.020}
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={5000}
+            />
+          
+          </div>
+          </FadeContent>
+
           <p className="text-base md:text-lg mt-3 max-w-2xl mx-auto">
             <SplitText
               text="    A passionate software engineer specializing in building innovative web and mobile applications. Explore my work and let's create something amazing together!"
@@ -218,6 +252,8 @@ const HeroSection = () => {
 
           </FadeContent>
         </div>
+
+
       </section>
     </div>
 

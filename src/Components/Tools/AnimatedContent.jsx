@@ -3,7 +3,7 @@ import { useSpring, animated } from "@react-spring/web";
 
 const AnimatedContent = ({
   children,
-  distance = 100,
+  distance = 50,
   direction = "vertical",
   reverse = false,
   config = { tension: 50, friction: 25 },
@@ -20,10 +20,7 @@ const AnimatedContent = ({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(ref.current);
-        }
+        setInView(entry.isIntersecting);
       },
       { threshold }
     );
@@ -39,13 +36,10 @@ const AnimatedContent = ({
   };
 
   const springProps = useSpring({
-    from: {
-      transform: `translate${directions[direction]}(${reverse ? `-${distance}px` : `${distance}px`}) scale(${scale})`,
-      opacity: animateOpacity ? initialOpacity : 1,
-    },
-    to: inView
-      ? { transform: "translateY(0px) scale(1)", opacity: 1 }
-      : undefined,
+    transform: inView
+      ? `translate${directions[direction]}(0px) scale(1)`
+      : `translate${directions[direction]}(${reverse ? `-${distance}px` : `${distance}px`}) scale(${scale})`,
+    opacity: inView ? 1 : animateOpacity ? initialOpacity : 1,
     config,
   });
 

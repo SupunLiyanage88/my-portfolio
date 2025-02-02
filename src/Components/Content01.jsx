@@ -2,12 +2,12 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faPaintBrush, faDatabase, faBug, faCode, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import { faAndroid } from '@fortawesome/free-brands-svg-icons';
-import FadeContent from './Tools/FadeContent';
 import CountUp from './Tools/CountUp'
 import web from '../assets/web.png';
 import mobile from '../assets/mobile.png';
 import java from '../assets/java.png';
 import Rproject from '../assets/React.png';
+import AnimatedContent from './Tools/AnimatedContent.jsx'
 
 const Content01 = () => {
   const skills = [
@@ -56,11 +56,21 @@ const Content01 = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skill, index) => (
+                <AnimatedContent
+                distance={150}
+                direction="horizontal"
+                reverse={false}
+                config={{ tension: 80, friction: 20 }}
+                initialOpacity={0.2}
+                animateOpacity
+                scale={1.1}
+                threshold={0.2}
+              >
             <div
               key={index}
               className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
             >
-            <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+
               <div className="flex flex-col items-start">
                 <FontAwesomeIcon
                   icon={skill.icon}
@@ -71,14 +81,28 @@ const Content01 = () => {
                 </h3>
                 <p className="text-gray-600">{skill.description}</p>
               </div>
-              </FadeContent>
+              
             </div>
+            </AnimatedContent>
           ))}
         </div>
       </div>
-      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+
+      <AnimatedContent
+        distance={150}
+        direction="horizontal"
+        reverse={true}
+        config={{ tension: 80, friction: 20 }}
+        initialOpacity={0.2}
+        animateOpacity
+        scale={0.5}
+        threshold={0.1}
+      >
+
+      <h1 className="text-4xl font-bold mb-12 text-center mt-10">Total Projects</h1>
       <div className="flex justify-center mt-12 px-4">
-            <div className="flex flex-wrap gap-8 sm:gap-16 md:gap-20 lg:gap-32 bg-white rounded-lg shadow-md p-4 sm:p-8 md:p-16 lg:p-20">
+      
+            <div className="flex flex-wrap gap-8 sm:gap-16 md:gap-20 lg:gap-32 bg-white rounded-lg shadow-md p-4 sm:p-8 md:p-16 lg:p-20 mb-20">
                 
                 {/* Web Projects */}
                 <div className="w-full sm:w-auto text-center">
@@ -92,7 +116,7 @@ const Content01 = () => {
                         className="count-up-text font-bold text-[2.5rem] sm:text-[3rem] md:text-[4rem]"
                         />
                     </div>
-                    <h5 className="text-lg sm:text-xl md:text-2xl">Web Projects</h5>
+                    <h5 className="text-lg sm:text-xl md:text-2xl text-gray-500">Web Projects</h5>
                     <img
                         src={web}
                         alt="Profile"
@@ -112,7 +136,7 @@ const Content01 = () => {
                         className="count-up-text font-bold text-[2.5rem] sm:text-[3rem] md:text-[4rem]"
                         />
                     </div>
-                    <h5 className="text-lg sm:text-xl md:text-2xl">Mobile Projects</h5>
+                    <h5 className="text-lg sm:text-xl md:text-2xl text-gray-500">Mobile Projects</h5>
                     <img
                         src={mobile}
                         alt="Profile"
@@ -132,7 +156,7 @@ const Content01 = () => {
                         className="count-up-text font-bold text-[2.5rem] sm:text-[3rem] md:text-[4rem]"
                         />
                     </div>
-                    <h5 className="text-lg sm:text-xl md:text-2xl">Java Projects</h5>
+                    <h5 className="text-lg sm:text-xl md:text-2xl text-gray-500">Java Projects</h5>
                     <img
                         src={java}
                         alt="Profile"
@@ -153,7 +177,7 @@ const Content01 = () => {
                         className="count-up-text font-bold text-[2.5rem] sm:text-[3rem] md:text-[4rem]"
                         />
                     </div>
-                    <h5 className="text-lg sm:text-xl md:text-2xl">React Projects</h5>
+                    <h5 className="text-lg sm:text-xl md:text-2xl text-gray-500">React Projects</h5>
                     <img
                         src={Rproject}
                         alt="Profile"
@@ -162,7 +186,9 @@ const Content01 = () => {
                 </div>
             </div>
         </div>
-        </FadeContent>
+
+        <div className="h-20"> {/* I put this to make animation fix dont remove  */} </div>
+        </AnimatedContent>
 
     </div>
   );

@@ -84,7 +84,7 @@ const Navbar = () => {
     <div className="relative">
       <header className="bg-white shadow-sm backdrop-blur-md bg-opacity-80">
         <div 
-          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300"
+          className="absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300"
           style={{ width: `${scrollProgress}%` }}
         />
         
@@ -111,7 +111,7 @@ const Navbar = () => {
                   >
                     <Icon className="w-5 h-5" />
                     <span>{item.name}</span>
-                    <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gray-400 transition-all duration-300 group-hover:w-full"></span>
                   </a>
                 );
               })}
@@ -120,7 +120,7 @@ const Navbar = () => {
             <a
               href="#"
               onClick={handleContactClick}
-              className="hidden sm:flex items-center gap-2 relative py-2.5 px-8 text-white text-base font-medium rounded-full overflow-hidden bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg active:scale-95"
+              className="hidden sm:flex items-center gap-2 relative py-2.5 px-8 text-white text-base font-medium rounded-full overflow-hidden bg-blue-500 hover:bg-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg active:scale-95"
             >
               <FiMail className="w-5 h-5" />
               Contact Me

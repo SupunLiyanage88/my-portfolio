@@ -16,10 +16,7 @@ const FadeContent = ({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(ref.current);
-        }
+        setInView(entry.isIntersecting);
       },
       { threshold }
     );
