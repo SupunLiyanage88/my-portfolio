@@ -29,7 +29,7 @@ const HeroSection = () => {
     
     if (action === 'download') {
       const fileId = resumeUrl.split('/')[5];
-      const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+      const downloadUrl = `https://drive.google.com/file/d/1USEZmA02WN3pB2bGbALmTUR14Q4TFpKO/view?usp=drive_link=${fileId}`;
       
       // Create temporary link for download
       const link = document.createElement('a');
