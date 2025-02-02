@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faPaintBrush, faDatabase, faBug, faCode, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import { faPaintBrush, faDatabase, faBug, faCode, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import { faAndroid } from '@fortawesome/free-brands-svg-icons';
 import CountUp from './Tools/CountUp'
 import web from '../assets/web.png';
@@ -50,39 +50,35 @@ const Content01 = () => {
   ];
 
   return (
-    <div className="w-full bg-gray-100 py-16 px-4">
+    <div className="w-full bg-gray-100 py-8 sm:py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-12 text-center">What I Do</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">What I Do</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {skills.map((skill, index) => (
-                <AnimatedContent
-                distance={150}
-                direction="horizontal"
-                reverse={false}
-                config={{ tension: 80, friction: 20 }}
-                initialOpacity={0.2}
-                animateOpacity
-                scale={1.1}
-                threshold={0.2}
-              >
-            <div
+            <AnimatedContent
               key={index}
-              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
+              distance={150}
+              direction="horizontal"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
             >
-
-              <div className="flex flex-col items-start">
-                <FontAwesomeIcon
-                  icon={skill.icon}
-                  className="text-4xl mb-4 text-black"
-                />
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">
-                  {skill.title}
-                </h3>
-                <p className="text-gray-600">{skill.description}</p>
+              <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 hover:shadow-lg transition-shadow duration-300">
+                <div className="flex flex-col items-start">
+                  <FontAwesomeIcon
+                    icon={skill.icon}
+                    className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-black"
+                  />
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">
+                    {skill.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600">{skill.description}</p>
+                </div>
               </div>
-              
-            </div>
             </AnimatedContent>
           ))}
         </div>
@@ -98,98 +94,95 @@ const Content01 = () => {
         scale={0.5}
         threshold={0.1}
       >
-
-      <h1 className="text-4xl font-bold mb-12 text-center mt-10">Total Projects</h1>
-      <div className="flex justify-center mt-12 px-4">
-      
-            <div className="flex flex-wrap gap-8 sm:gap-16 md:gap-20 lg:gap-32 bg-white rounded-lg shadow-md p-4 sm:p-8 md:p-16 lg:p-20 mb-20">
-                
-                {/* Web Projects */}
-                <div className="w-full sm:w-auto text-center">
-                    <div className="justify-center text-center">
-                        <CountUp
-                        from={0}
-                        to={10}
-                        separator=","
-                        direction="up"
-                        duration={1}
-                        className="count-up-text font-bold text-[2.5rem] sm:text-[3rem] md:text-[4rem]"
-                        />
-                    </div>
-                    <h5 className="text-lg sm:text-xl md:text-2xl text-gray-500">Web Projects</h5>
-                    <img
-                        src={web}
-                        alt="Profile"
-                        className="w-8 sm:w-10 h-auto mx-auto mt-4"
-                    />
-                </div>
-
-                {/* Mobile Projects */}
-                <div className="w-full sm:w-auto text-center">
-                    <div className="justify-center text-center">
-                        <CountUp
-                        from={0}
-                        to={4}
-                        separator=","
-                        direction="up"
-                        duration={1}
-                        className="count-up-text font-bold text-[2.5rem] sm:text-[3rem] md:text-[4rem]"
-                        />
-                    </div>
-                    <h5 className="text-lg sm:text-xl md:text-2xl text-gray-500">Mobile Projects</h5>
-                    <img
-                        src={mobile}
-                        alt="Profile"
-                        className="w-8 sm:w-10 h-auto mx-auto mt-4"
-                    />
-                </div>
-
-                {/* Java Projects */}
-                <div className="w-full sm:w-auto text-center">
-                    <div className="justify-center text-center">
-                        <CountUp
-                        from={0}
-                        to={3}
-                        separator=","
-                        direction="up"
-                        duration={1}
-                        className="count-up-text font-bold text-[2.5rem] sm:text-[3rem] md:text-[4rem]"
-                        />
-                    </div>
-                    <h5 className="text-lg sm:text-xl md:text-2xl text-gray-500">Java Projects</h5>
-                    <img
-                        src={java}
-                        alt="Profile"
-                        className="w-8 sm:w-10 h-auto mx-auto mt-4"
-                    />
-                </div>
-                
-
-                {/* React Projects */}
-                <div className="w-full sm:w-auto text-center">
-                    <div className="justify-center text-center">
-                        <CountUp
-                        from={0}
-                        to={6}
-                        separator=","
-                        direction="up"
-                        duration={1}
-                        className="count-up-text font-bold text-[2.5rem] sm:text-[3rem] md:text-[4rem]"
-                        />
-                    </div>
-                    <h5 className="text-lg sm:text-xl md:text-2xl text-gray-500">React Projects</h5>
-                    <img
-                        src={Rproject}
-                        alt="Profile"
-                        className="w-8 sm:w-10 h-auto mx-auto mt-4"
-                    />
-                </div>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center mt-8 sm:mt-10">
+          Total Projects
+        </h1>
+        <div className="flex justify-center mt-8 sm:mt-12 px-2 sm:px-4">
+          <div className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 lg:gap-16 bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8 lg:p-12 mb-12 sm:mb-20">
+            {/* Web Projects */}
+            <div className="w-36 sm:w-40 text-center">
+              <div className="justify-center text-center">
+                <CountUp
+                  from={0}
+                  to={10}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="count-up-text font-bold text-2xl sm:text-3xl md:text-4xl"
+                />
+              </div>
+              <h5 className="text-base sm:text-lg md:text-xl text-gray-500">Web Projects</h5>
+              <img
+                src={web}
+                alt="Profile"
+                className="w-6 sm:w-8 h-auto mx-auto mt-3"
+              />
             </div>
+
+            {/* Mobile Projects */}
+            <div className="w-36 sm:w-40 text-center">
+              <div className="justify-center text-center">
+                <CountUp
+                  from={0}
+                  to={4}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="count-up-text font-bold text-2xl sm:text-3xl md:text-4xl"
+                />
+              </div>
+              <h5 className="text-base sm:text-lg md:text-xl text-gray-500">Mobile Projects</h5>
+              <img
+                src={mobile}
+                alt="Profile"
+                className="w-6 sm:w-8 h-auto mx-auto mt-3"
+              />
+            </div>
+
+            {/* Java Projects */}
+            <div className="w-36 sm:w-40 text-center">
+              <div className="justify-center text-center">
+                <CountUp
+                  from={0}
+                  to={3}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="count-up-text font-bold text-2xl sm:text-3xl md:text-4xl"
+                />
+              </div>
+              <h5 className="text-base sm:text-lg md:text-xl text-gray-500">Java Projects</h5>
+              <img
+                src={java}
+                alt="Profile"
+                className="w-6 sm:w-8 h-auto mx-auto mt-3"
+              />
+            </div>
+
+            {/* React Projects */}
+            <div className="w-36 sm:w-40 text-center">
+              <div className="justify-center text-center">
+                <CountUp
+                  from={0}
+                  to={6}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="count-up-text font-bold text-2xl sm:text-3xl md:text-4xl"
+                />
+              </div>
+              <h5 className="text-base sm:text-lg md:text-xl text-gray-500">React Projects</h5>
+              <img
+                src={Rproject}
+                alt="Profile"
+                className="w-6 sm:w-8 h-auto mx-auto mt-3"
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="h-20"> {/* I put this to make animation fix dont remove  */} </div>
-        </AnimatedContent>
-
+        <div className="h-16 sm:h-20"></div>
+      </AnimatedContent>
     </div>
   );
 };
