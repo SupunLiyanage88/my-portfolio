@@ -1,5 +1,6 @@
 import React from 'react';
 import FadeContent from './Tools/FadeContent';
+import AnimatedContent from './Tools/AnimatedContent.jsx'
 import {
   FaHtml5, FaJs, FaCss3Alt, FaBootstrap, FaReact, FaAngular,
   FaNodeJs, FaJava, FaPhp, FaPython, FaDatabase, FaAndroid,
@@ -78,35 +79,93 @@ const Content02 = () => {
     <div className="min-h-screen p-8 bg-gray-100">
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-800 mb-20 text-center">
+          <h1 className="text-5xl font-bold text-gray-800 mb-20 text-center">
             Professional Skills
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={true}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >
             <CategoryCard
               title="Frontend Development"
               items={skills.frontend}
               icon={categoryIcons.frontend}
             />
+            </AnimatedContent>
+            <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >         
             <CategoryCard
               title="Backend Development"
               items={skills.backend}
               icon={categoryIcons.backend}
             />
+            </AnimatedContent>
+
+            <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={true}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >          
             <CategoryCard
               title="Database Management"
               items={skills.databases}
               icon={categoryIcons.databases}
             />
+            </AnimatedContent>  
+
+            <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >              
             <CategoryCard
               title="Mobile Development"
               items={skills.mobile}
               icon={categoryIcons.mobile}
             />
+            </AnimatedContent>
+
+            <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={true}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >             
             <CategoryCard
               title="Other Tools"
               items={skills.OtherTools}
               icon={categoryIcons.other}
             />
+            </AnimatedContent>
           </div>
         </div>
       </FadeContent>
