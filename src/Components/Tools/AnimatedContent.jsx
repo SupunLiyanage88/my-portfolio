@@ -13,6 +13,7 @@ const AnimatedContent = ({
   threshold = 0.1,
 }) => {
   const [inView, setInView] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef();
 
   useEffect(() => {
@@ -20,7 +21,10 @@ const AnimatedContent = ({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated) {
+          setInView(true);
+          setHasAnimated(true);
+        }
       },
       { threshold }
     );
@@ -28,7 +32,7 @@ const AnimatedContent = ({
     observer.observe(ref.current);
 
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, hasAnimated]);
 
   const directions = {
     vertical: "Y",
