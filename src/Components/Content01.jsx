@@ -136,13 +136,24 @@ const Content01 = () => {
             </div>
           </div>
         </section>
-      
+      </AnimatedContent>
+      <AnimatedContent
+        distance={150}
+        direction="vertical"
+        reverse={false}
+        config={{ tension: 80, friction: 20 }}
+        initialOpacity={0.2}
+        animateOpacity
+        scale={0.5}
+        threshold={0.1}
+      >
 
       <div className="max-w-6xl mx-auto mt-8 sm:mt-12">
         <h1 className="text-3xl sm:text-5xl font-bold mb-8 mt-10 sm:mb-12 text-center">Featured Projects</h1>
         <ImageSlider />
       </div>
       </AnimatedContent>
+      
           
     </div>
   );
