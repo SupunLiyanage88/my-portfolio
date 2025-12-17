@@ -10,6 +10,8 @@ import {
   FaPhone,
   FaFacebook
 } from 'react-icons/fa';
+import FadeContent from './Tools/FadeContent';
+import AnimatedContent from './Tools/AnimatedContent.jsx'
 
 const Footer = () => {
     const socialLinks = [
@@ -30,8 +32,21 @@ const Footer = () => {
   
     return (
       <footer className="bg-black text-white mt-20">
+        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+        <AnimatedContent
+              distance={150}
+              direction="vertical"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >
         <div className="max-w-6xl mx-auto px-4 py-16">
+        
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          
             {/* About Section */}
             <div className="space-y-6">
               <h3 className="text-2xl font-bold border-b-2 border-white pb-2 inline-block">
@@ -92,8 +107,11 @@ const Footer = () => {
             <p className="mt-2 text-sm text-gray-400">
               Crafted with passion by L.S.B Hemaratne, a dedicated software engineer striving to create impactful digital solutions.
             </p>
-          </div>
+          </div>          
         </div>
+        
+        </AnimatedContent>
+        </FadeContent>
       </footer>
     );
 };
